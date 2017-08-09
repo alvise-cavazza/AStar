@@ -77,7 +77,7 @@ public class Executor
 
                //exec.runGameTimed(new mySimulatedAnnealingPacman(),new StarterGhosts(),visual);         
                 //  exec.runGameTimed(new myAlphaBetaPacman(),new StarterGhosts(),visual);
-                  exec.runGameTimed(new MyBFSPacMan(),new StarterGhosts(),visual);
+                  exec.runGameTimed(new alphaBetaController(),new StarterGhosts(),visual);
                //   exec.runGameTimed(new myGeneticAlgorithmPacman(),new StarterGhosts(),visual);
                  // exec.runGameTimed(new myKNNPacman(),new StarterGhosts(),visual); 
                   //exec.runGameTimed(new myDecisionTreePacman(),new RandomGhosts(),visual);

@@ -22,7 +22,12 @@ import pacman.controllers.examples.RandomNonRevPacMan;
 import pacman.controllers.examples.RandomPacMan;
 import pacman.controllers.examples.StarterGhosts;
 import pacman.controllers.examples.StarterPacMan;
-import pacman.entries.pacman.MyPacMan;
+import pacman.entries.ghosts.MyBFSGhosts;
+import pacman.entries.ghosts.MyDFSGhosts;
+import pacman.entries.pacman.MyBFSPacMan;
+import pacman.entries.pacman.MyDFSPacMan;
+import pacman.entries.pacman.MyIDPacMan;
+import pacman.entries.pacman.*;
 import pacman.game.Game;
 import pacman.game.GameView;
 
@@ -37,6 +42,9 @@ import static pacman.game.Constants.*;
 @SuppressWarnings("unused")
 public class Executor
 {	
+        
+        public static Controller<EnumMap<GHOST,MOVE>> ghostLogic;
+
 	/**
 	 * The main method. Several options are listed - simply remove comments to use the option you want.
 	 *
@@ -63,8 +71,27 @@ public class Executor
 		//run the game in asynchronous mode.
 		boolean visual=true;
 //		exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
-		exec.runGameTimed(new StarterPacMan(),new StarterGhosts(),visual);
-		//exec.runGameTimed(new MyPacMan(),new StarterGhosts(),visual);
+
+                //exec.runGameTimed(new mySimulatedAnnealingPacman(),new StarterGhosts(),visual);         
+               //exec.runGameTimed(new myAlphaBetaPacman(),new StarterGhosts(),visual);
+
+               //exec.runGameTimed(new mySimulatedAnnealingPacman(),new StarterGhosts(),visual);         
+                //  exec.runGameTimed(new myAlphaBetaPacman(),new StarterGhosts(),visual);
+                  exec.runGameTimed(new MyBFSPacMan(),new StarterGhosts(),visual);
+               //   exec.runGameTimed(new myGeneticAlgorithmPacman(),new StarterGhosts(),visual);
+                 // exec.runGameTimed(new myKNNPacman(),new StarterGhosts(),visual); 
+                  //exec.runGameTimed(new myDecisionTreePacman(),new RandomGhosts(),visual);
+                
+                 // String fileName="trainingData.txt";
+		//exec.runGameTimedRecorded(new HumanController(new KeyBoardInput()),new RandomGhosts(),visual,fileName);
+                
+/* Don't use this since I realised later that Evalution file evaluates the best move from Pacman's Point of view
+   and Not Ghost's Point of View. Got to work on evalutionGhosts.java
+
+*/
+  //              exec.runGameTimed(new MyBFSPacMan(),new MyDFSGhosts(),visual);
+  
+
 //		exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);	
 		//*/
 		
@@ -95,10 +122,10 @@ public class Executor
      * @param ghostController The Ghosts controller
      * @param trials The number of trials to be executed
      */
-    public void runExperiment(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,int trials)
+    public double runExperiment(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,int trials)
     {
     	double avgScore=0;
-    	
+    	ghostLogic = ghostController;
     	Random rnd=new Random(0);
 		Game game;
 		
@@ -108,15 +135,15 @@ public class Executor
 			
 			while(!game.gameOver())
 			{
-		        game.advanceGame(pacManController.getMove(game.copy(),System.currentTimeMillis()+DELAY),
+		       game.advanceGame(pacManController.getMove(game.copy(),System.currentTimeMillis()+DELAY),
 		        		ghostController.getMove(game.copy(),System.currentTimeMillis()+DELAY));
 			}
 			
 			avgScore+=game.getScore();
-			System.out.println(i+"\t"+game.getScore());
+			//System.out.println(i+"\t"+game.getScore());
 		}
 		
-		System.out.println(avgScore/trials);
+		return (avgScore/trials);
     }
 	
 	/**
@@ -131,6 +158,8 @@ public class Executor
 	 */
 	public void runGame(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean visual,int delay)
 	{
+            
+            ghostLogic = ghostController;
 		Game game=new Game(0);
 
 		GameView gv=null;
@@ -159,6 +188,8 @@ public class Executor
      */
     public void runGameTimed(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean visual)
 	{
+            
+            ghostLogic = ghostController;
 		Game game=new Game(0);
 		
 		GameView gv=null;
@@ -207,6 +238,7 @@ public class Executor
      */
     public void runGameTimedSpeedOptimised(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,boolean fixedTime,boolean visual)
  	{
+            ghostLogic = ghostController;
  		Game game=new Game(0);
  		
  		GameView gv=null;

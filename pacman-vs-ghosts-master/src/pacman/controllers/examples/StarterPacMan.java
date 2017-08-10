@@ -1,6 +1,5 @@
 package pacman.controllers.examples;
 
-import pacman.controllers.algoControllers.iterativeDeepeningController;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import pacman.controllers.Controller;
@@ -8,6 +7,7 @@ import pacman.controllers.algoControllers.BFSController;
 import pacman.controllers.algoControllers.DFSController;
 import pacman.controllers.algoControllers.Evaluation;
 import pacman.controllers.moveControllers.Tree;
+import pacman.game.Constants.MOVE;
 import pacman.game.Game;
 
 import static pacman.game.Constants.*;
@@ -36,9 +36,15 @@ public class StarterPacMan extends Controller<MOVE>
        dfs=new DFSController();
 
     }
+
+	@Override
+	public MOVE getMove(Game game, long timeDue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
         
         
-        @Override
+ /*       @Override
 	public MOVE getMove(Game game,long timeDue)
 	{			
 		int current=game.getPacmanCurrentNodeIndex();
@@ -57,7 +63,7 @@ public class StarterPacMan extends Controller<MOVE>
                // return idc.getMove(game, ghostMoves, Evaluation.DEPTH);
                
                return dfs.getMove(ghostMoves, tree);
-	}
+	}*/
 }
 
 

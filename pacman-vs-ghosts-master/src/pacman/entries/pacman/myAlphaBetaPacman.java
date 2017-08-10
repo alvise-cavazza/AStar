@@ -5,10 +5,6 @@
  */
 package pacman.entries.pacman;
 
-/**
- *
- * @author Marmik
- */
 
 import java.util.EnumMap;
 import pacman.controllers.Controller;
@@ -19,10 +15,7 @@ import pacman.controllers.algoControllers.Evaluation;
 import pacman.controllers.moveControllers.Tree;
 import pacman.game.Constants.GHOST;
 
-/**
- *
- * @author Marmik
- */
+
 
 
 
@@ -52,11 +45,11 @@ public class myAlphaBetaPacman extends Controller<MOVE>
 		ghostMoves.put(GHOST.PINKY, game.getGhostLastMoveMade(GHOST.PINKY));
 		ghostMoves.put(GHOST.SUE, game.getGhostLastMoveMade(GHOST.SUE));
 		
-		Tree tree = new Tree(Evaluation.DEPTH);
+		Tree tree = new Tree(Evaluation.DEPTH, game, ghostMoves);
 		tree.getHeadNode().setGameState(game);
 		
 	
-            return ab.getMove(game, ghostMoves, Evaluation.DEPTH);
+        return ab.getMove(game, ghostMoves, Evaluation.DEPTH);
 	
 	//	return myMove;
 	}

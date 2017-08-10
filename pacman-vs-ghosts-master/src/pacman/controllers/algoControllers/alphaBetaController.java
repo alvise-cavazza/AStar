@@ -5,10 +5,7 @@
  */
 package pacman.controllers.algoControllers;
 
-/**
- *
- * @author Marmik
- */
+
 import java.util.EnumMap;
 
 import pacman.game.Constants.GHOST;

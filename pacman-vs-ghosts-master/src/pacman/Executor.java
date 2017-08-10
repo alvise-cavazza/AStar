@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Random;
 import pacman.controllers.Controller;
-import pacman.controllers.HumanController;
-import pacman.controllers.KeyBoardInput;
 import pacman.controllers.examples.AggressiveGhosts;
 import pacman.controllers.examples.Legacy;
 import pacman.controllers.examples.Legacy2TheReckoning;
@@ -22,11 +20,6 @@ import pacman.controllers.examples.RandomNonRevPacMan;
 import pacman.controllers.examples.RandomPacMan;
 import pacman.controllers.examples.StarterGhosts;
 import pacman.controllers.examples.StarterPacMan;
-import pacman.entries.ghosts.MyBFSGhosts;
-import pacman.entries.ghosts.MyDFSGhosts;
-import pacman.entries.pacman.MyBFSPacMan;
-import pacman.entries.pacman.MyDFSPacMan;
-import pacman.entries.pacman.MyIDPacMan;
 import pacman.entries.pacman.*;
 import pacman.game.Game;
 import pacman.game.GameView;
@@ -76,8 +69,8 @@ public class Executor
                //exec.runGameTimed(new myAlphaBetaPacman(),new StarterGhosts(),visual);
 
                //exec.runGameTimed(new mySimulatedAnnealingPacman(),new StarterGhosts(),visual);         
-                //  exec.runGameTimed(new myAlphaBetaPacman(),new StarterGhosts(),visual);
-                  exec.runGameTimed(new alphaBetaController(),new StarterGhosts(),visual);
+                  exec.runGameTimed(new myAlphaBetaPacman(),new StarterGhosts(),visual);
+                //  exec.runGameTimed(new alphaBetaController(),new StarterGhosts(),visual);
                //   exec.runGameTimed(new myGeneticAlgorithmPacman(),new StarterGhosts(),visual);
                  // exec.runGameTimed(new myKNNPacman(),new StarterGhosts(),visual); 
                   //exec.runGameTimed(new myDecisionTreePacman(),new RandomGhosts(),visual);
@@ -196,9 +189,6 @@ public class Executor
 		
 		if(visual)
 			gv=new GameView(game).showGame();
-		
-		if(pacManController instanceof HumanController)
-			gv.getFrame().addKeyListener(((HumanController)pacManController).getKeyboardInput());
 				
 		new Thread(pacManController).start();
 		new Thread(ghostController).start();
@@ -245,9 +235,7 @@ public class Executor
  		
  		if(visual)
  			gv=new GameView(game).showGame();
- 		
- 		if(pacManController instanceof HumanController)
- 			gv.getFrame().addKeyListener(((HumanController)pacManController).getKeyboardInput());
+
  				
  		new Thread(pacManController).start();
  		new Thread(ghostController).start();
@@ -310,8 +298,6 @@ public class Executor
 		{
 			gv=new GameView(game).showGame();
 			
-			if(pacManController instanceof HumanController)
-				gv.getFrame().addKeyListener(((HumanController)pacManController).getKeyboardInput());
 		}		
 		
 		new Thread(pacManController).start();

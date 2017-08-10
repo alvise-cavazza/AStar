@@ -13,10 +13,6 @@ import pacman.game.Constants.MOVE;
 import pacman.game.Game;
 
 
-/**
- *
- * @author Marmik
- */
 
 public class Node {
 	
@@ -25,6 +21,7 @@ public class Node {
 	private Node predecessor;
 	private MOVE move;
 	private boolean visited;
+	private int cost;
 
 	public Node() {
 		this(MOVE.NEUTRAL, null);
@@ -73,5 +70,13 @@ public class Node {
 	
 	public void setGameState(Game gameState) {
 		this.gameState = gameState;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 }

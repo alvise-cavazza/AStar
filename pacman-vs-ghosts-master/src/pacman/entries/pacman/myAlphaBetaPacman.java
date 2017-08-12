@@ -10,7 +10,7 @@ import java.util.EnumMap;
 import pacman.controllers.Controller;
 import pacman.game.Constants.MOVE;
 import pacman.game.Game;
-import pacman.controllers.algoControllers.alphaBetaController;
+//import pacman.controllers.algoControllers.alphaBetaController;
 import pacman.controllers.algoControllers.Evaluation;
 import pacman.controllers.moveControllers.Tree;
 import pacman.game.Constants.GHOST;
@@ -21,13 +21,13 @@ import pacman.game.Constants.GHOST;
 
 public class myAlphaBetaPacman extends Controller<MOVE>
 {
-        private alphaBetaController ab;
+       // private alphaBetaController ab;
 	private MOVE myMove=MOVE.NEUTRAL;
 	private static final int MIN_DISTANCE=20;	//if a ghost is this close, run away
 
         public myAlphaBetaPacman(){
         
-		ab = new alphaBetaController();
+		//ab = new alphaBetaController();
 
         
         }
@@ -49,8 +49,9 @@ public class myAlphaBetaPacman extends Controller<MOVE>
 		tree.getHeadNode().setGameState(game);
 		
 	
-        return ab.getMove(game, ghostMoves, Evaluation.DEPTH);
+       // return ab.getMove(game, ghostMoves, Evaluation.DEPTH);
 	
+		return tree.getMove();
 	//	return myMove;
 	}
 }

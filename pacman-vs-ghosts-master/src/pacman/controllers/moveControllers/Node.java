@@ -22,6 +22,8 @@ public class Node {
 	private MOVE move;
 	private boolean visited;
 	private int cost;
+	private int depth;
+	private int id;
 
 	public Node() {
 		this(MOVE.NEUTRAL, null);
@@ -78,5 +80,21 @@ public class Node {
 
 	public void setCost(int cost) {
 		this.cost = cost;
+	}
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

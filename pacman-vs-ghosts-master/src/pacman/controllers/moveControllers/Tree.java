@@ -113,7 +113,7 @@ public class Tree {
 		
 		Node left = new Node(MOVE.LEFT, node);
 		copy.advanceGame(MOVE.LEFT, ghostMoves);
-		left.setCost(Evaluation.evaluateGameState(copy));
+		left.setCost(Evaluation.evaluateGameState(copy)-1000);
 		left.setGameState(copy);
 		left.setDepth(node.getDepth()+1);
 		left.setId(id++);
@@ -121,7 +121,7 @@ public class Tree {
 		
 		Node right = new Node(MOVE.RIGHT, node);
 		copy1.advanceGame(MOVE.RIGHT, ghostMoves);
-		right.setCost(Evaluation.evaluateGameState(copy1));
+		right.setCost(Evaluation.evaluateGameState(copy1)-1000);
 		right.setGameState(copy1);
 		right.setDepth(node.getDepth()+1);
 		right.setId(id++);
@@ -129,7 +129,7 @@ public class Tree {
 		
 		Node up = new Node(MOVE.UP, node);
 		copy2.advanceGame(MOVE.UP, ghostMoves);
-		up.setCost(Evaluation.evaluateGameState(copy2));
+		up.setCost(Evaluation.evaluateGameState(copy2)-1000);
 		up.setGameState(copy2);
 		up.setDepth(node.getDepth()+1);
 		up.setId(id++);
@@ -137,7 +137,7 @@ public class Tree {
 		
 		Node down = new Node(MOVE.DOWN, node);
 		copy3.advanceGame(MOVE.DOWN, ghostMoves);
-		down.setCost(Evaluation.evaluateGameState(copy3));
+		down.setCost(Evaluation.evaluateGameState(copy3)-1000);
 		down.setGameState(copy3);
 		down.setDepth(node.getDepth()+1);
 		down.setId(id++);

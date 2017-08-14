@@ -8,10 +8,7 @@ import pacman.game.Game;
 import pacman.game.Constants.DM;
 import pacman.game.Constants.GHOST;
 import pacman.game.Constants.MOVE;
-/**
- *
- * @author Marmik
- */
+
 
 // Consists of Two Methods 
 // 1) EvaluateGameState() : 
@@ -20,13 +17,13 @@ import pacman.game.Constants.MOVE;
 public class Evaluation {
     
     // if true Pac-Man goes for level completion than high score
-	private static final boolean COMPLETE_LEVEL = true; 
+	//private static final boolean COMPLETE_LEVEL = true; 
 	private static final int MIN_GHOST_DISTANCE = 20;
-	private static final int MIN_EDIBLE_GHOST_DISTANCE = 100;
+	//private static final int MIN_EDIBLE_GHOST_DISTANCE = 100;
         
         //Defines the depth of the tree created. Should be balanced since deeper trees increases the execution time and 
-        // shallow trees reduces the best probility of the best move really being the best move
-	public static final int DEPTH = 6;  
+        // shallow trees reduces the best probability of the best move really being the best move
+	public static final int DEPTH = 8;  
   
 	
 	
@@ -93,8 +90,10 @@ public class Evaluation {
 		int shortestPillDistance =  gameState.getShortestPathDistance(pacmanNode,
 				gameState.getClosestNodeIndexFromNodeIndex(pacmanNode, pillIndices, DM.PATH));
 		
-		return distanceFromGhost + gameState.getScore() * 100 + (4-gameState.getNumberOfActivePowerPills())*8000 + gameState.getPacmanNumberOfLivesRemaining() * 10000000 + (200 - shortestPillDistance);
-	
+		return distanceFromGhost + gameState.getScore() * 100 + gameState.getPacmanNumberOfLivesRemaining() * 10000000 + (200 - shortestPillDistance);
+		//return distanceFromGhost + gameState.getScore() * 5 + (4-gameState.getNumberOfActivePowerPills())*800 + gameState.getPacmanNumberOfLivesRemaining() * 10000 + (200 - shortestPillDistance);
+		//return distanceFromGhost + (4-gameState.getNumberOfActivePowerPills())*800 + gameState.getPacmanNumberOfLivesRemaining() * 10000;
+		
 	
 	/*	 		int shortestPillDistance =  gameState.getShortestPathDistance(pacmanNode,
 				gameState.getClosestNodeIndexFromNodeIndex(pacmanNode, activePillIndices, DM.PATH));
@@ -109,7 +108,7 @@ public class Evaluation {
 	}
 	
         
-	public static MOVE getBestMove(int leftValue, int rightValue, int upValue, int downValue) {
+	/*public static MOVE getBestMove(int leftValue, int rightValue, int upValue, int downValue) {
 		
 		MOVE bestMove = MOVE.NEUTRAL;
 		int bestValue = Integer.MIN_VALUE;
@@ -131,5 +130,5 @@ public class Evaluation {
 		}
 		
 		return bestMove;
-	}
+	}*/
 }

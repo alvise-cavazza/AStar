@@ -1,11 +1,9 @@
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package pacman.controllers.moveControllers;
 
 import java.util.ArrayList;
@@ -13,14 +11,12 @@ import pacman.game.Constants.MOVE;
 import pacman.game.Game;
 
 
-
+//The base class to build a Tree
 public class Node {
 	
 	private Game gameState;
 	private ArrayList<Node> neighbors;
-	private Node predecessor;
 	private MOVE move;
-	private boolean visited;
 	private int cost;
 	private int depth;
 	private int id;
@@ -31,7 +27,6 @@ public class Node {
 	
 	public Node(MOVE move, Node predecessor) {
 		this.move = move;
-		this.predecessor = predecessor;
 	}
 	
 	public ArrayList<Node> getNeighbors() {
@@ -40,22 +35,6 @@ public class Node {
 
 	public void setNeighbors(ArrayList<Node> neighbors) {
 		this.neighbors = neighbors;
-	}
-
-	public Node getPredecessor() {
-		return predecessor;
-	}
-
-	public void setPredecessor(Node predecessor) {
-		this.predecessor = predecessor;
-	}
-
-	public boolean isVisited() {
-		return visited;
-	}
-
-	public void setVisited(boolean visited) {
-		this.visited = visited;
 	}
 
 	public MOVE getMove() {

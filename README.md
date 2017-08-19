@@ -2,7 +2,7 @@
 A Java implementation of the game Ms. Pac-Man for the Ms Pac-Man vs Ghosts Competition.
 This implementation is made with A* and you can see how it works in this video https://youtu.be/RGjjeYpgATc
 
-These are the rules and the things that you need to know about the  Ms Pac-Man vs Ghosts Competition:
+These are the rules and the things that you need to know about the Ms Pac-Man vs Ghosts Competition:
 
 # Pacman vs Ghosts Simulator v6.2
 

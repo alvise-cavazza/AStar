@@ -8,7 +8,7 @@ package pacman.controllers.moveControllers;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
-import pacman.controllers.algoControllers.Evaluation;
+import pacman.controllers.Evaluation.Evaluation;
 import pacman.game.Game;
 import pacman.game.Constants.GHOST;
 import pacman.game.Constants.MOVE;

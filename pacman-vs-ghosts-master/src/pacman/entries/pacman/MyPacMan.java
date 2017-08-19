@@ -3,7 +3,7 @@ package pacman.entries.pacman;
 import java.util.EnumMap;
 
 import pacman.controllers.Controller;
-import pacman.controllers.algoControllers.Evaluation;
+import pacman.controllers.Evaluation.Evaluation;
 import pacman.controllers.moveControllers.Tree;
 import pacman.game.Constants.GHOST;
 import pacman.game.Constants.MOVE;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pacman.controllers.algoControllers;
+package pacman.controllers.Evaluation;
 
 import pacman.game.Game;
 import pacman.game.Constants.DM;

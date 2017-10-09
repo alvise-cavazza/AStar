@@ -17,9 +17,11 @@ public class Node {
 	private Game gameState;
 	private ArrayList<Node> neighbors;
 	private MOVE move;
-	private int cost;
+	private int totalScore;
 	private int depth;
-	private int id;
+	private int position;
+	private int [] activePills;
+	private int value;
 
 	public Node() {
 		this(MOVE.NEUTRAL, null);
@@ -53,12 +55,12 @@ public class Node {
 		this.gameState = gameState;
 	}
 
-	public int getCost() {
-		return cost;
+	public int getTotalScore() {
+		return totalScore;
 	}
 
-	public void setCost(int cost) {
-		this.cost = cost;
+	public void setTotalScore(int cost) {
+		this.totalScore = cost;
 	}
 
 	public int getDepth() {
@@ -69,11 +71,28 @@ public class Node {
 		this.depth = depth;
 	}
 
-	public int getId() {
-		return id;
+
+	public int getPosition() {
+		return position;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
+	public int [] getActivePills() {
+		return activePills;
+	}
+
+	public void setActivePills(int [] activePills) {
+		this.activePills = activePills;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 }

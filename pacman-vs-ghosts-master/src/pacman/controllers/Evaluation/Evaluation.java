@@ -20,7 +20,12 @@ public class Evaluation {
 	// private static final int MIN_EDIBLE_GHOST_DISTANCE = 100;
 
 	// The maximum depth of the three that Astar is going to use
-	public static final int DEPTH = 16;
+	public static final int DEPTH = 15;
+	public static final int DISTANCEPILLS=200;
+	public static final int VALUELIFE=100000;
+	public static final int VALUESCORE=100;
+	
+	
 
 	public static int evaluateGameState(Game gameState) {
 		int pacmanNode = gameState.getPacmanCurrentNodeIndex();
@@ -46,7 +51,7 @@ public class Evaluation {
 		 * shortestGhostDistance; shortestGhostDistance = distance; } } }
 		 */
 
-		if (shortestGhostDistance != Integer.MAX_VALUE && shortestGhostDistance != -1
+	/*	if (shortestGhostDistance != Integer.MAX_VALUE && shortestGhostDistance != -1
 				&& shortestGhostDistance < MIN_GHOST_DISTANCE) {
 			if (secondShortestGhostDistance != Integer.MAX_VALUE && secondShortestGhostDistance != -1
 					&& secondShortestGhostDistance < MIN_GHOST_DISTANCE) {
@@ -61,7 +66,7 @@ public class Evaluation {
 
 			// this prevents Ms Pacman from staying near MIN_GHOST_DISTANCE
 			distanceFromGhost += (MIN_GHOST_DISTANCE + 10) * 10000;
-		}
+		}*/
 
 		// it updates the pill's indexes
 		int[] activePillIndices = gameState.getActivePillsIndices();
@@ -74,10 +79,12 @@ public class Evaluation {
 		int shortestPillDistance = gameState.getShortestPathDistance(pacmanNode,
 				gameState.getClosestNodeIndexFromNodeIndex(pacmanNode, pillIndices, DM.PATH));
 
-		return distanceFromGhost + gameState.getScore() * 100 + gameState.getPacmanNumberOfLivesRemaining() * 10000000
-				+ (200 - shortestPillDistance);
+		int random = (int) Math.random();
+		//System.out.println(gameState.getScore() * VALUESCORE + gameState.getPacmanNumberOfLivesRemaining() * VALUELIFE);
+		return gameState.getScore() * VALUESCORE + gameState.getPacmanNumberOfLivesRemaining() * VALUELIFE
+				+ (DISTANCEPILLS - shortestPillDistance);
 
-		// other euristhics that ave to be fixed
+		// other euristhics that have to be fixed
 		// return distanceFromGhost + gameState.getScore() * 5 +
 		// (4-gameState.getNumberOfActivePowerPills())*800 +
 		// gameState.getPacmanNumberOfLivesRemaining() * 10000 + (200 -

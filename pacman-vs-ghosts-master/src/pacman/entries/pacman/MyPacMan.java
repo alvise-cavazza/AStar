@@ -35,7 +35,8 @@ public class MyPacMan extends Controller<MOVE>{
 		Tree tree = new Tree(Evaluation.DEPTH, game, ghostMoves);
 		tree.getHeadNode().setGameState(game);
 
-	
+		//System.out.println(tree.getCont());
+		
 		return tree.getMove();
 
 	}
